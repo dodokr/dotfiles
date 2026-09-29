@@ -81,8 +81,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Toggle line comment in Normal mode
-vim.keymap.set('n', '<C-_>', 'gcc', { remap = true, desc = 'Toggle comment line' })
-
 -- Toggle comment on selection in Visual mode
 vim.keymap.set('x', '<C-_>', 'gc', { remap = true, desc = 'Toggle comment selection' })
+
+-- Helper function to toggle comment and shift cursor dynamically
+-- Normally, gcc takes cursor to the beginning of a line
+local function toggle_comment_shift_cursor()
+    local cursor_pos = vim.api.nvim_win_get_cursor(0)
+    local old_len = string.len(vim.api.nvim_get_current_line())
+
+    vim.cmd('normal gcc')
+
+  local new_len = string.len(vim.api.nvim_get_current_line())
+  local len_diff = new_len - old_len
+
+  cursor_pos[2] = math.max(0, cursor_pos[2] + len_diff)
+  vim.api.nvim_win_set_cursor(0, cursor_pos)
+end
+
+-- (Ctrl + /)
+vim.keymap.set('n', '<C-_>', toggle_comment_shift_cursor, { desc = 'Toggle comment and shift cursor' })
+vim.keymap.set('i', '<C-_>', toggle_comment_shift_cursor, { desc = 'Toggle comment and shift cursor' })
+

@@ -1,5 +1,7 @@
 # Plugins to Install
 
+* [ ] Configure params of LSP clangd!
+
 * [ ] Lazygit? https://github.com/jesseduffield/lazygit
 
 * [x] WHAT are QUICKFIX and LOCATION lists? (cnext, cprev, lnext, ...)?

@@ -6,12 +6,19 @@ source /usr/share/cachyos-fish-config/cachyos-config.fish
 #    # smth smth
 #end
 
+## Aliases
 # Safe rm
 alias rmi='rm -i'
 alias vim='nvim'
 alias ??='fabric -s'
 alias gp='git push'
+# Typo lol
+alias claer='clear'
 
+# Swap CachyOS aliases
+alias ll='eza -al --color=always --group-directories-first --icons=always'
+alias ls='eza -l --color=always --group-directories-first --icons=always'
 
 # opencode
 fish_add_path /home/jozefk/.opencode/bin
+
