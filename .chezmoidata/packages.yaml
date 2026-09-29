@@ -19,4 +19,5 @@ packages:
       - visual-studio-code-bin
       - google-chrome
       - spotify
+      - chezmoi_modify_manager
 
