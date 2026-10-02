@@ -81,6 +81,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+-- Quit bindings with q
+-- I know there's Ctrl + w + q, just experimenting
+vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', { desc = 'Quit window' })
+
 -- Toggle comment on selection in Visual mode
 vim.keymap.set('x', '<C-_>', 'gc', { remap = true, desc = 'Toggle comment selection' })
 
