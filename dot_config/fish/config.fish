@@ -19,6 +19,9 @@ alias claer='clear'
 alias ll='eza -al --color=always --group-directories-first --icons=always'
 alias ls='eza -l --color=always --group-directories-first --icons=always'
 
+# Tab not working for this command
+complete --command chezmoi_modify_manager --force-files
+
 # opencode
 fish_add_path /home/jozefk/.opencode/bin
 
