@@ -4,6 +4,15 @@ My dotfiles and configs. Thanks [chezmoi](https://www.chezmoi.io/quick-start/#st
 
 
 ## Requirements
-* `chezmoi`
-* `chezmoi_modify_manager`
+* `chezmoi` (pacman)
+* `chezmoi_modify_manager` (e.g. yay)
+
+## Setup
+
+* Install requirements
+* Clone this repo to path `~/.local/share/chezmoi`
+* Run:
+```bash
+chezmoi apply
+```
 
