@@ -107,3 +107,7 @@ end
 vim.keymap.set('n', '<C-_>', toggle_comment_shift_cursor, { desc = 'Toggle comment and shift cursor' })
 vim.keymap.set('i', '<C-_>', toggle_comment_shift_cursor, { desc = 'Toggle comment and shift cursor' })
 
+-- vim fugitive
+vim.keymap.set("n", "<leader>gu", ":Git! push<CR>", { desc = "Git Push" })
+vim.keymap.set("n", "<leader>gp", ":Git! pull<CR>", { desc = "Git Pull" })
+
