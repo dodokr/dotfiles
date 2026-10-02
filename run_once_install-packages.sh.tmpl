@@ -3,6 +3,8 @@
 
 set -xe
 
+sudo pacman -Syu
+
 # Official repositories
 sudo pacman -S --needed --noconfirm \
 {{ range .packages.arch.pacman -}}
@@ -22,10 +24,7 @@ fi
 
 # AUR
 if command -v yay >/dev/null 2>&1; then
-    yay -S --needed --noconfirm \
-    {{ range .packages.arch.aur -}}
-        {{ . }} \
-    {{ end -}}
+    yay -S {{ range .packages.arch.aur }}{{ . }} {{ end }}
 else
     echo "yay is not installed; skipping AUR packages."
 fi

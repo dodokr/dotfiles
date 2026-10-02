@@ -1,0 +1,43 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+# git: loop indefinitely until both name and email are configured
+while true; do
+    GIT_NAME=$(git config --global user.name 2>/dev/null)
+    GIT_EMAIL=$(git config --global user.email 2>/dev/null)
+
+    if [ -n "$GIT_NAME" ] && [ -n "$GIT_EMAIL" ]; then
+        echo "Git configuration detected!"
+        break
+    fi
+
+    echo "Git configuration is missing or incomplete."
+    echo "Please set up your details below to continue."
+    echo ""
+
+    if [ -z "$GIT_NAME" ]; then
+        read -p "Enter your Git Name: " new_name
+        if [ -n "$new_name" ]; then
+            git config --global user.name "$new_name"
+        else
+            echo "Name cannot be empty."
+            continue
+        fi
+    fi
+
+    # Prompt for Email if it's empty
+    if [ -z "$GIT_EMAIL" ]; then
+        read -p "Enter your Git Email: " new_email
+        if [ -n "$new_email" ]; then
+            git config --global user.email "$new_email"
+        else
+            echo "Email cannot be empty."
+            continue
+        fi
+    fi
+
+    echo "----------------------------------------"
+done
+
+{{ end -}}
+

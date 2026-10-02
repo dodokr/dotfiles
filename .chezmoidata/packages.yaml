@@ -14,10 +14,14 @@ packages:
       - unzip
       - zip
       - super-productivity
+      - ttf-hack-nerd
+      # For language servers in nvim
+      - nodejs
+      - npm
+      - go
 
     aur:
       - visual-studio-code-bin
       - google-chrome
       - spotify
-      - chezmoi_modify_manager
 
