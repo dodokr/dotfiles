@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/home/jozefk/.local/bin/autostart_workspace.sh
+Icon=text-x-shellscript
+Name=autostart_workspace.sh
+Type=Application
+X-KDE-AutostartScript=true
