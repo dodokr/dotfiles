@@ -29,14 +29,3 @@ ydotool key 19:0 57:0 29:0    # Release all three keys
 spotify &
 nohup super-productivity > /dev/null 2>&1 &
 
-# Wait for D3 apps to start
-sleep 3
-
-# Switch to Desktop 3
-qdbus6 org.kde.KWin /KWin org.kde.KWin.setCurrentDesktop 3
-sleep 0.2
-
-# Super Productivity should be focused in D3 
-# Meta/Super = 125, Right arrow = 106
-ydotool key 125:1 106:1 106:0 125:0
-
