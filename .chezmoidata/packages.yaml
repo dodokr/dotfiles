@@ -24,4 +24,5 @@ packages:
       - visual-studio-code-bin
       - google-chrome
       - spotify
+      - localsend
 

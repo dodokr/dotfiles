@@ -30,9 +30,7 @@ spotify &
 nohup super-productivity > /dev/null 2>&1 &
 
 # Wait for D3 apps to start
-# Super Productivity takes forever to load (~9s),
-# which is insane for a todo app
-sleep 10
+sleep 3
 
 # Switch to Desktop 3
 qdbus6 org.kde.KWin /KWin org.kde.KWin.setCurrentDesktop 3
