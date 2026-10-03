@@ -8,10 +8,7 @@ This guide outlines how to migrate the **Smart Video Wallpaper Reborn** plugin a
 
 ## Prerequisites
 
-Ensure you have the core video processing engines installed on your system:
-```bash
-sudo pacman -S qt6-multimedia-ffmpeg
-```
+* Smart video wallpaper reborn
 
 ---
 
@@ -43,18 +40,18 @@ sudo chmod 644 /usr/share/wallpapers/login-video.mp4
 
 ## 3. Configure the Login Manager Back-end
 
-PLM evaluates its configurations directly from `/etc/plasmalogin.conf`. Open this file with root privileges:
-
 ```bash
-sudo nano /etc/plasmalogin.conf
+sudo -E vim /etc/plasmalogin.conf
 ```
 
-Inject or update the `[Greeter]` section with the exact identifier string and the explicit `file://` protocol URL mapping:
+Add following (add own login video):
 
 ```ini
 [Greeter]
 WallpaperPluginId=luisbocanegra.smart.video.wallpaper.reborn
-VideoUrls=file:///usr/share/wallpapers/login-video.mp4
+
+[Greeter][Wallpaper][luisbocanegra.smart.video.wallpaper.reborn][General]
+VideoUrls=[{"filename":"file:///usr/share/wallpapers/login-video.mp4","enabled":true,"duration":0,"customDuration":0,"playbackRate":0,"alternativePlaybackRate":0,"loop":false}]
 ```
 
 ---
