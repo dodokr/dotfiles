@@ -3,3 +3,4 @@ TODO.md
 
 .local/bin/claude
 .config/nvim/lazy-lock.json 
+**/*.src.ini
