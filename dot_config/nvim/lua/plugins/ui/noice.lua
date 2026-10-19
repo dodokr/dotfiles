@@ -11,11 +11,25 @@ return {
         ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
       },
     },
-    -- 2. Explicitly disable everything else
+    -- explicitly disable everything else
     cmdline = { enabled = false }, -- Keeps default Vim command line
     messages = { enabled = false }, -- Keeps default Vim messages/echoes
     popupmenu = { enabled = false }, -- Keeps default select menus
     notify = { enabled = false }, -- Disables custom notifications
+
+    -- filter noisy notifications
+    routes = {
+      {
+        filter = {
+          event = 'lsp',
+          kind = 'progress',
+          any = {
+            { find = 'pyright' },
+          },
+        },
+        opts = { skip = true },
+      },
+    },
 
     presets = {
       lsp_doc_border = false, -- add a border to hover docs and signature help

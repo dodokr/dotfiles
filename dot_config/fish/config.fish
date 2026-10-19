@@ -14,7 +14,6 @@ function fish_greeting
     echo ""
 end
 
-
 ## Aliases
 # Safe rm
 alias rmi='rm -i'

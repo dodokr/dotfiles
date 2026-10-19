@@ -84,6 +84,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Quit bindings with q
 -- I know there's Ctrl + w + q, just experimenting
 vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', { desc = 'Quit window' })
+vim.keymap.set('n', '<C-q>', '<cmd>qa<cr>', { desc = 'Quit window' })
 
 -- Toggle comment on selection in Visual mode
 vim.keymap.set('x', '<C-_>', 'gc', { remap = true, desc = 'Toggle comment selection' })
@@ -110,4 +111,17 @@ vim.keymap.set('i', '<C-_>', toggle_comment_shift_cursor, { desc = 'Toggle comme
 -- vim fugitive
 vim.keymap.set("n", "<leader>gu", ":Git! push<CR>", { desc = "Git Push" })
 vim.keymap.set("n", "<leader>gp", ":Git! pull<CR>", { desc = "Git Pull" })
+
+-- Automatically re-add the current file to chezmoi on a hotkey
+vim.keymap.set("n", "<leader>cha", function()
+  local file = vim.fn.expand("%:p")
+  -- Ensure it's a file tracked by chezmoi before trying to re-add
+  local output = vim.fn.system("chezmoi re-add " .. vim.fn.shellescape(file) .. " 2>&1")
+
+  if vim.v.shell_error == 0 then
+    print("File re-added to chezmoi")
+  else
+    vim.api.nvim_echo({{ "✗ " .. vim.trim(output), "ErrorMsg" }}, true, {})
+  end
+end, { desc = "Chezmoi: Re-add current file" })
 
