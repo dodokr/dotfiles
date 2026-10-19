@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/home/jozefk/.local/bin/restore_layouts.sh
+Icon=text-x-shellscript
+Name=restore_layouts.sh
+Type=Application
+X-KDE-AutostartScript=true
