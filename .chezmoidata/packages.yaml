@@ -19,6 +19,13 @@ packages:
       - nodejs
       - npm
       - go
+      # Japanese
+      - fcitx5-im 
+      - fcitx5-mozc
+      - noto-fonts-cjk
+      # Docker
+      - docker
+      - docker-compose
 
     aur:
       - visual-studio-code-bin
