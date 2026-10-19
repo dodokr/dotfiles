@@ -68,5 +68,7 @@
   <Action name="new-tab"/>
   <Action name="split-view"/>
  </ToolBar>
- <ActionProperties scheme="Default"/>
+ <ActionProperties scheme="Default">
+  <Action name="split-view" priority="0"/>
+ </ActionProperties>
 </gui>

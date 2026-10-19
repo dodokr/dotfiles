@@ -87,5 +87,6 @@
  </ToolBar>
  <ActionProperties scheme="Default">
   <Action name="clear-history" shortcut=""/>
+  <Action name="clear-history-and-reset" shortcut="Alt+Shift+P"/>
  </ActionProperties>
 </gui>
