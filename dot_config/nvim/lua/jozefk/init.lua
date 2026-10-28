@@ -1,3 +1,5 @@
+require 'jozefk.filetype'
 require 'jozefk.set'
 require 'jozefk.remap'
+require 'jozefk.undo'
 require 'jozefk.lazy'

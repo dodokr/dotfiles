@@ -13,7 +13,6 @@ local function setup_lsp()
     end
   end
 
-  print(lsp_servers)
   vim.lsp.enable(lsp_servers)
 end
 
