@@ -26,6 +26,8 @@ packages:
       # Docker
       - docker
       - docker-compose
+      # Key remaps
+      - keyd
 
     aur:
       - visual-studio-code-bin

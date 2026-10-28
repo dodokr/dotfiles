@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# default.conf hash: {{ include "root_files/etc/keyd/default.conf" | sha256sum }}
+
+echo "Applying keyd configuration changes..."
+
+# Ensure the directory exists
+sudo mkdir -p /etc/keyd
+
+# Copy the file to /etc
+sudo cp {{ .chezmoi.sourceDir }}/root_files/etc/keyd/default.conf /etc/keyd/default.conf
+
+# Reload keyd to apply the new layout immediately
+sudo systemctl enable --now keyd
+sudo systemctl restart keyd
+
