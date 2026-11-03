@@ -1,0 +1,37 @@
+{
+  "syncClaudeAiSkills": false,
+  "syncClaudeAiPlugins": false,
+  "model": "opus",
+  "extraKnownMarketplaces": {
+    "universal-modder": {
+      "source": {
+        "source": "github",
+        "repo": "rehan-remade/universal-modder"
+      }
+    }
+  },
+  "modelSettings": {
+    "claude-sonnet-5-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
+  "skipDangerousModePermissionPrompt": false,
+  "theme": "dark",
+  "voiceEnabled": true,
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/notify-done.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
