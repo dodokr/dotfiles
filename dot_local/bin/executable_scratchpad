@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Create a new unique scratchpad markdown file in /tmp and open it in $EDITOR.
+set -euo pipefail
+
+dir="${TMPDIR:-/tmp}/scratchpads"
+mkdir -p "$dir"
+
+file="$(mktemp "$dir/$(date +%Y-%m-%d_%H%M%S)-XXXXXX.md")"
+printf '# Scratchpad %s\n\n' "$(date '+%Y-%m-%d %H:%M')" > "$file"
+
+exec "${EDITOR:-vi}" "$file"
