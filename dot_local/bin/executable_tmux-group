@@ -1,0 +1,9 @@
+#!/bin/sh
+# Attach to a new grouped session <base>-NN; it is destroyed when its client detaches.
+base="$1"
+[ -n "$base" ] || { echo "usage: tmux-group <session>" >&2; exit 1; }
+n=1
+while tmux has-session -t "=$base-$(printf %02d "$n")" 2>/dev/null; do
+    n=$((n + 1))
+done
+exec tmux new-session -t "$base" -s "$base-$(printf %02d "$n")" \; set-option destroy-unattached on
