@@ -125,3 +125,15 @@ vim.keymap.set("n", "<leader>cha", function()
   end
 end, { desc = "Chezmoi: Re-add current file" })
 
+
+-- Copy relative file path to system clipboard
+vim.keymap.set("n", "<Leader>cfr", function()
+  vim.fn.setreg("+", vim.fn.expand("%"))
+  print("Copied relative path: " .. vim.fn.expand("%"))
+end, { desc = "Copy relative file path" })
+
+-- Copy absolute file path to system clipboard
+vim.keymap.set("n", "<Leader>cfa", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
+  print("Copied absolute path: " .. vim.fn.expand("%:p"))
+end, { desc = "Copy absolute file path" })
