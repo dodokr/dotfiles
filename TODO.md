@@ -11,4 +11,4 @@
 
 ## Claude Code
 
-* [ ] Publish `claude-sessions` (`~/Projects/side-projects/claude-sessions` has no git remote yet), then add it to `run_once_after_clone-side-projects.sh` so the `~/.local/bin/claude-sessions` symlink and its SessionEnd hook work on a fresh machine. It also needs `python` in `.chezmoidata/packages.yaml`.
+* [ ] Publish `tmux-claude-sessions` (`~/Projects/side-projects/tmux-claude-sessions` has no git remote yet), then add it to `run_once_after_clone-side-projects.sh` so the `~/.local/bin/claude-sessions` symlink and its SessionEnd hook work on a fresh machine. It also needs `python` in `.chezmoidata/packages.yaml`.
