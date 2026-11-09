@@ -2,6 +2,73 @@
   "syncClaudeAiSkills": false,
   "syncClaudeAiPlugins": false,
   "model": "opus",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.local/bin/claude-tasks hook SessionStart"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.local/bin/claude-tasks hook UserPromptSubmit"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.local/bin/claude-tasks hook Stop"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.local/bin/claude-tasks hook SessionEnd"
+          },
+          {
+            "type": "command",
+            "command": "~/.local/bin/claude-sessions hook"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.local/bin/claude-tasks hook PostToolUse"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "permission_prompt|elicitation_dialog",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.local/bin/claude-tasks hook Notification"
+          }
+        ]
+      }
+    ]
+  },
   "extraKnownMarketplaces": {
     "universal-modder": {
       "source": {
@@ -13,25 +80,22 @@
   "modelSettings": {
     "claude-sonnet-5-5": {
       "effortLevel": "medium"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "high"
     }
   },
   "voice": {
     "enabled": true,
     "mode": "hold"
   },
-  "skipDangerousModePermissionPrompt": false,
+  "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
+  "editorMode": "normal",
+  "preferredNotifChannel": "notifications_disabled",
   "voiceEnabled": true,
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/notify-done.sh"
-          }
-        ]
-      }
-    ]
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); t='~'; cwd=$(echo \"$input\" | jq -r '.workspace.current_dir // .cwd'); pct=$(echo \"$input\" | jq -r '(.context_window.used_percentage // 0) | floor'); used=$(echo \"$input\" | jq -r '(.context_window.total_input_tokens // 0)'); size=$(echo \"$input\" | jq -r '(.context_window.context_window_size // 0)'); printf '\\033[32m%s@%s\\033[0m \\033[36m%s\\033[0m \\033[33mctx %s%% (%sk/%sk)\\033[0m' \"$(whoami)\" \"$(hostname -s)\" \"${cwd/#$HOME/$t}\" \"$pct\" \"$((used/1000))\" \"$((size/1000))\""
   }
 }
