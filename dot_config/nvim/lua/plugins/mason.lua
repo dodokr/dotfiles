@@ -16,6 +16,7 @@ local PACKAGES = {
   'html',
   'jsonls',
   'lua_ls',
+  'marksman',
   'pyright',
   'sqls',
   'tailwindcss',
