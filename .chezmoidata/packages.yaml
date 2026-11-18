@@ -29,6 +29,8 @@ packages:
       - docker-compose
       # Key remaps
       - keyd
+      # Rust + cargo
+      - rust
 
     aur:
       - google-chrome
