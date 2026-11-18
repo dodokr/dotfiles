@@ -50,6 +50,6 @@ on the next apply (full `pacman -Syu` included).
 ## Layout
 
 - `dot_config/nvim/`: lazy.nvim config; own modules in `lua/jozefk/`, plugin specs in `lua/plugins/`. `lazy-lock.json` is not tracked.
-- `dot_config/fish/`, `dot_config/tmux/`: shell and tmux (tpm installed by `run_after_tmux.sh`).
+- `dot_config/fish/`, `dot_config/tmux/`: shell and tmux (tpm installed by `run_once_after_tmux.sh`).
 - `private_dot_claude/`: Claude Code `settings.json`, `keybindings.json`, statusline script.
 - `TODO.md`: open tasks. `login-screen.md`: manual (non-automated) Plasma login-screen setup.
