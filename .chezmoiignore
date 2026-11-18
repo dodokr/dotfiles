@@ -4,3 +4,9 @@ TODO.md
 .local/bin/claude
 .config/nvim/lazy-lock.json 
 **/*.src.ini
+CLAUDE.md
+CLAUDE.local.md
+login-screen.md
+todo-ntb-setup.md
+# Applied to /etc by run_onchange_after_configure-keyd.sh.tmpl, not to $HOME
+root_files
