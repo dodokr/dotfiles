@@ -3,3 +3,8 @@
 	email = 65533512+dodokr@users.noreply.github.com
 [init]
 	defaultBranch = main
+
+# Machine-local overrides (e.g. work profiles), not tracked; ignored if missing.
+# Keep last so it can override the above.
+[include]
+    path = ~/.gitconfig-local
