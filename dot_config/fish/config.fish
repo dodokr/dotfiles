@@ -24,6 +24,8 @@ alias cls="clear && tmux clear-history"
 # Typo lol
 alias claer='clear'
 
+alias refresh-claude='claude-refresh'
+
 # Swap CachyOS aliases
 alias ll='eza -al --color=always --group-directories-first --icons=always'
 alias ls='eza -l --color=always --group-directories-first --icons=always'
