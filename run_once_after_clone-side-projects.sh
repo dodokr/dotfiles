@@ -12,3 +12,4 @@ clone() {
 }
 
 clone dodokr/tmux-claude-tasks "$HOME/Projects/side-projects/tmux-claude-tasks"
+clone dodokr/tmux-claude-sessions "$HOME/Projects/side-projects/tmux-claude-sessions"
