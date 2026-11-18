@@ -7,7 +7,7 @@ DefaultProfile=Dodino.profile
 ConfigVersion=1
 
 [MainWindow]
-MenuBar=Enabled
+MenuBar=Disabled
 ToolBarsMovable=Enabled
 
 [Notification Messages]

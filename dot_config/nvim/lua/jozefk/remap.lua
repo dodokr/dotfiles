@@ -21,6 +21,9 @@ vim.keymap.set('x', '<leader>p', [["_dP]])
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>Y', [["+Y]])
 
+-- Copy whole buffer to system clipboard
+vim.keymap.set('n', '<leader>A', 'ggVG"+y', { desc = 'Yank buffer to clipboard' })
+
 vim.keymap.set('n', 'Q', '<nop>')
 
 -- Quickfix and Location lists

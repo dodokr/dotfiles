@@ -20,6 +20,8 @@ vim.opt.smartindent = true -- Do smart autoindenting when starting a new line
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.ignorecase = true -- Case-insensitive search...
+vim.opt.smartcase = true -- ...unless the pattern contains an uppercase letter
 
 vim.opt.termguicolors = true
 

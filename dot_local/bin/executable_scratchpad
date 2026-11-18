@@ -6,6 +6,5 @@ dir="${TMPDIR:-/tmp}/scratchpads"
 mkdir -p "$dir"
 
 file="$(mktemp "$dir/$(date +%Y-%m-%d_%H%M%S)-XXXXXX.md")"
-printf '# Scratchpad %s\n\n' "$(date '+%Y-%m-%d %H:%M')" > "$file"
 
 exec "${EDITOR:-vi}" "$file"
