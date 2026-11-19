@@ -10,3 +10,9 @@ login-screen.md
 todo-ntb-setup.md
 # Applied to /etc by run_onchange_after_configure-keyd.sh.tmpl, not to $HOME
 root_files
+
+# Desktop layout is tied to this machine's containment/activity IDs. Opt out per machine with
+# `kde_desktop_layout = false` under [data] in ~/.config/chezmoi/chezmoi.toml.
+{{ if not (dig "kde_desktop_layout" true .) }}
+.config/plasma-org.kde.plasma.desktop-appletsrc
+{{ end }}

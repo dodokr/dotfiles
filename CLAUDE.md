@@ -29,6 +29,9 @@ KDE rewrites its ini files constantly, so they are not tracked as plain files:
   `.src.ini` into the live file. Add ignore/transform rules there for volatile keys.
 - Update with `chezmoi_modify_manager --smart-add ~/.config/<name>`, not `chezmoi add`.
 - Requires `chezmoi_modify_manager` (AUR) to be installed before `chezmoi apply`.
+- `plasma-org.kde.plasma.desktop-appletsrc` holds one machine's desktop layout (containment and
+  activity IDs differ per machine; `source auto` deletes sections missing from the source). Other
+  machines opt out with `kde_desktop_layout = false` under `[data]` in `~/.config/chezmoi/chezmoi.toml`.
 
 ## Files outside $HOME
 
