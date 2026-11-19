@@ -43,7 +43,9 @@ re-runs on change. Example: `run_onchange_after_configure-keyd.sh.tmpl` → `/et
 
 `.chezmoidata/packages.yaml` (`packages.arch.pacman`, `packages.arch.aur`) is rendered by
 `run_once_install-packages.sh.tmpl`. Editing the list changes the script content, so it re-runs
-on the next apply (full `pacman -Syu` included).
+on the next apply (`pacman -Syu --needed` + `yay --needed`, so re-runs are safe).
+
+Scripts must be idempotent: `run_once_` state is per machine and any edit re-runs them everywhere.
 
 ## Side projects
 

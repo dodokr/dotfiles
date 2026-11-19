@@ -1,12 +1,13 @@
 #!/bin/bash
 # ufw setup: base services + hotspot hosting (NetworkManager shared mode).
-# Usage: sudo bash ~/ufw-setup.sh [wifi-interface]
+# Runs from `chezmoi apply` (re-execs itself with sudo) or manually: bash ufw-setup.sh [wifi-interface]
+# Safe to re-run: ufw skips existing rules, the hotspot connection is only created if missing.
 set -euo pipefail
 
-[[ $EUID -eq 0 ]] || { echo "Run as root: sudo bash $0" >&2; exit 1; }
+[[ $EUID -eq 0 ]] || exec sudo --preserve-env=HOTSPOT_PSK bash "$0" "$@"
 
 # Wifi interface used for the hotspot. Override: sudo bash ufw-setup.sh wlp2s0
-WIFI_IF="${1:-$(iw dev 2>/dev/null | awk '$1=="Interface"{print $2; exit}')}"
+WIFI_IF="${1:-$(iw dev 2>/dev/null | awk '$1=="Interface"{print $2; exit}' || true)}"
 WIFI_IF="${WIFI_IF:-wlan0}"
 HOTSPOT_NET="10.42.0.0/24"   # NetworkManager default shared subnet
 HOTSPOT_GW="10.42.0.1"       # this machine's address when hosting
@@ -32,13 +33,17 @@ ufw status numbered
 # --- NetworkManager hotspot connection (created once, not started) ---
 # Start it later with: nmcli connection up Hotspot
 HOTSPOT_NAME="Hotspot"
-if nmcli -t -f NAME connection show | grep -qx "$HOTSPOT_NAME"; then
+if nmcli connection show "$HOTSPOT_NAME" >/dev/null 2>&1; then
     echo "NM connection '$HOTSPOT_NAME' already exists, skipping"
 else
-    # Password comes from $HOTSPOT_PSK (sudo HOTSPOT_PSK=... bash ...) or a prompt
+    # Password comes from $HOTSPOT_PSK (HOTSPOT_PSK=... chezmoi apply) or a prompt; empty skips
     PSK="${HOTSPOT_PSK:-}"
+    if [[ -z "$PSK" && -t 0 ]]; then
+        read -rsp "Hotspot password (min 8 chars, empty to skip): " PSK; echo
+    fi
     if [[ -z "$PSK" ]]; then
-        read -rsp "Hotspot password (min 8 chars): " PSK; echo
+        echo "No hotspot password given, skipping hotspot creation"
+        exit 0
     fi
     [[ ${#PSK} -ge 8 ]] || { echo "Password must be at least 8 characters" >&2; exit 1; }
 

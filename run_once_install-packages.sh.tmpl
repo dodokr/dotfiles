@@ -3,10 +3,9 @@
 
 set -xe
 
-sudo pacman -Syu
-
-# Official repositories
-sudo pacman -S --needed --noconfirm \
+# Safe to re-run: --needed skips installed packages. Upgrade and install in one transaction
+# (installing with a stale sync db, or -Sy without -u, is an unsupported partial upgrade on Arch).
+sudo pacman -Syu --needed --noconfirm \
 {{ range .packages.arch.pacman -}}
     {{ . }} \
 {{ end -}}
@@ -24,13 +23,13 @@ fi
 
 # AUR
 if command -v yay >/dev/null 2>&1; then
-    yay -S {{ range .packages.arch.aur }}{{ . }} {{ end }}
+    yay -S --needed --noconfirm {{ range .packages.arch.aur }}{{ . }} {{ end }}
 else
     echo "yay is not installed; skipping AUR packages."
 fi
 
-# Reload config
-fcitx5-remote -r
+# Reload input method config (fails when fcitx5 isn't running, e.g. first install)
+fcitx5-remote -r || true
 
 {{ end -}}
 
