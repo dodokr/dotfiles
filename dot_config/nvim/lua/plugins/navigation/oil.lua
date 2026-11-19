@@ -12,6 +12,11 @@ return {
     -- keep hidden oil buffers alive so <C-o>/<C-i> can jump back into them
     cleanup_delay_ms = false,
     view_options = { show_hidden = true },
+    -- oil's defaults (<C-h> = horizontal split, <C-l> = refresh) shadow vim-tmux-navigator
+    keymaps = {
+      ['<C-h>'] = false,
+      ['<C-l>'] = false,
+    },
   },
   keys = {
     { '<leader>pv', '<cmd>Oil<cr>', desc = 'File explorer (parent dir of current file)' },
