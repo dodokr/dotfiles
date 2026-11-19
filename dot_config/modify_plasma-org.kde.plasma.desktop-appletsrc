@@ -3,6 +3,7 @@
 source auto
 
 # Add your ignores and transforms here
+ignore regex ".*" "LastVideoPosition"
 #ignore section "my-section"
 #ignore "exact section name without brackets" "exact key name"
 #ignore regex "section.*" "key_prefix_.*"
